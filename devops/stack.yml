@@ -25,7 +25,7 @@ services:
     #image: yavbot-backend:latest
     #networks:
       #- yavbot-networks
-     # - traefik-public
+      #- traefik-public
     #deploy:
       #labels:
         #- "traefik.enable=true"
@@ -44,9 +44,9 @@ services:
   basededatos-pg:
     image: postgres:14
     environment:
-      POSTGRES_PASSWORD: r6qJMCocTNQdHXQyCMhW
+      POSTGRES_PASSWORD: tdaoybvt
     networks:
-      - yavbot-networks	
+      - yavbot-networks
 networks:
   traefik-public:
     external: true
