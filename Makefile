@@ -7,6 +7,6 @@ rm:
 network:
 	@ docker network create --driver overlay  --attachable --scope swarm  yavbot-networks
 kibana-logs:
-	@ docker logs $$(docker ps -q -f name=elk_yavbot-frontend)
+	@ docker logs $$(docker ps -q -f name=elk_yavbotfrontend)
 kibana-logs:
-	@ docker logs $$(docker ps -q -f name=elk_yavbot-backend)
+	@ docker logs $$(docker ps -q -f name=elk_yavbotbackend)
