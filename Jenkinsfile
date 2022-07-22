@@ -4,7 +4,7 @@ pipeline {
         PROJEC_NAME = "Yavbot-Frontend"
         TAGS = 'sistemaagil'
         HOME = '.'
-    }    
+    }
     stages {
 
         stage("Analisis Sonar"){
@@ -14,9 +14,9 @@ pipeline {
                     image 'node:16'
                 }
             }
-            steps{ 
+            steps{
                 sh "npm install"
-                sh "npm run sonar"  
+                sh "npm run sonar"
             }
         }
 
@@ -25,13 +25,13 @@ pipeline {
                 docker {
                     label 'integracion'
                     image 'jq:latest'
-                    args '--network=service_net' 
+                    args '--network=service_net'
                 }
             }
             environment {
                 SONAR_CREDENTIALS = credentials('sonar-admin')
-            }            
-            steps{ 
+            }
+            steps{
                 script {
                     estatus = sh(
                         script: 'curl -u $SONAR_CREDENTIALS_USR:$SONAR_CREDENTIALS_PSW -s http://sonarqube:9000/api/qualitygates/project_status?projectKey=${PROJEC_NAME} | jq .projectStatus.status',
@@ -56,8 +56,8 @@ pipeline {
                 sh 'docker build -f devops/Dockerfile -t yavbot-frontend:latest .'
                 sh 'docker stack rm yavbot'
                 sh 'docker stack deploy -c devops/stack.yml yavbot'
-            }    
+            }
         }
-       
+
     }
 }
