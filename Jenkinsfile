@@ -11,7 +11,7 @@ pipeline {
             agent {
                 docker {
                     label 'integracion'
-                    image 'node:16'
+                    image 'nginx:1.23.0'
                 }
             }
             steps{
