@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        PROJEC_NAME = "Yavbot-Frontend"
+        PROJEC_NAME = "yavbot-frontend"
         TAGS = 'sistemaagil'
         HOME = '.'
     }
