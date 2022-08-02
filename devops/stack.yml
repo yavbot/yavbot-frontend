@@ -41,14 +41,53 @@ services:
         - "traefik.http.services.yavbot-backend.loadbalancer.server.port=8091"
         - "traefik.docker.network=traefik-public"
 
-  basededatos-pg:
+  yavbot-db:
     image: postgres:14
     environment:
-      POSTGRES_PASSWORD: tdaoybvt
+      - TZ=America/Guayaquil
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=tdaoybvt
+      - POSTGRES_USER=postgres
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - yavbot_data:/var/lib/postgresql/data/pgdata
     networks:
       - yavbot-networks
+  yavbot_pgadmin:
+    image: dpage/pgadmin4:6.11
+    environment:
+      PGADMIN_DEFAULT_EMAIL: botyavbot@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: Yavchat22@
+    volumes:
+      - pgadmin_yavbot_data:/var/lib/pgadmin
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.pgadmin-yavbot.entrypoints=http"
+        - "traefik.http.routers.pgadmin-yavbot.rule=Host(`pgadmin-yavbot.sistemaagil.net`)"
+        - "traefik.http.middlewares.pgadmin-yavbot-https-redirect.redirectscheme.scheme=https"
+        - "traefik.http.routers.pgadmin-yavbot.middlewares=pgadmin-yavbot-https-redirect"
+        - "traefik.http.routers.pgadmin-yavbot-secure.entrypoints=https"
+        - "traefik.http.routers.pgadmin-yavbot-secure.rule=Host(`pgadmin-yavbot.sistemaagil.net`)"
+        - "traefik.http.routers.pgadmin-yavbot-secure.tls=true"
+        - "traefik.http.routers.pgadmin-yavbot-secure.tls.certresolver=http"
+        - "traefik.http.routers.pgadmin-yavbot-secure.service=pgadmin-yavbot"
+        - "traefik.http.services.pgadmin-yavbot.loadbalancer.server.port=80"
+        - "traefik.docker.network=traefik-public"
+    networks:
+      - yavbot-networks
+      - traefik-public
 networks:
   traefik-public:
     external: true
   yavbot-networks:
+    external: true
+volumes:
+  yavbot_data:
+    external: true
+  pgadmin_yavbot_data: 
     external: true
