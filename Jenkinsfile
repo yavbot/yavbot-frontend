@@ -16,6 +16,7 @@ pipeline {
             }
             steps{
                 sh "npm install"
+								sh "npm tast"
                 sh "npm run sonar"
             }
         }
@@ -48,14 +49,14 @@ pipeline {
             }
         }
 
-        stage("Deploy"){
+        stage("Despliegue"){
             agent {
                 label 'integracion'
             }
             steps{
-                sh 'docker build -f yavbot-frontend/devops/Dockerfile -t yavbot-frontend:latest .'
+                sh 'docker build -f devops/Dockerfile -t yavbot-frontend:latest .'
                 sh 'docker stack rm yavbot'
-                sh 'docker stack deploy -c yavbot-frontend/devops/stack.yml yavbot'
+                sh 'docker stack deploy -c devops/stack.yml yavbot'
             }
         }
 
