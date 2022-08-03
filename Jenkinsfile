@@ -11,7 +11,7 @@ pipeline {
             agent {
                 docker {
                     label 'integracion'
-                    image 'nginx:1.23.0'
+                    image 'node:16'
                 }
             }
             steps{
@@ -48,14 +48,14 @@ pipeline {
             }
         }
 
-        stage("Despliegue"){
+        stage("Deploy"){
             agent {
                 label 'integracion'
             }
             steps{
-                sh 'docker build -f devops/Dockerfile -t yavbot-frontend:latest .'
+                sh 'docker build -f yavbot-frontend/devops/Dockerfile -t yavbot-frontend:latest .'
                 sh 'docker stack rm yavbot'
-                sh 'docker stack deploy -c devops/stack.yml yavbot'
+                sh 'docker stack deploy -c yavbot-frontend/devops/stack.yml yavbot'
             }
         }
 
