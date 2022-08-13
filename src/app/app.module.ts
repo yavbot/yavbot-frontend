@@ -12,6 +12,7 @@ import { ChatbotComponent} from './chatbot/chatbot.component';
 //Angular Material
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {HttpClientModule} from '@angular/common/http';
 
 
 
@@ -26,7 +27,8 @@ import {MatInputModule} from '@angular/material/input';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+		HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
