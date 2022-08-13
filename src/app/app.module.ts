@@ -11,13 +11,15 @@ import { LoginComponent } from './login/login.component';
 //Angular Material
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { ConfigurationComponent } from './configuration/configuration.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    ConfigurationComponent
   ],
   imports: [
     BrowserModule,
