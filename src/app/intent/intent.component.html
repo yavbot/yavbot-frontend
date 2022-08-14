@@ -1,0 +1,20 @@
+<p>Registro de intenciones</p>
+
+<div>
+	  <label for="">Tags:</label>
+		<input type="text" placeholder="Ingrese el tag" [(ngModel)]="intencionActual.tag">
+</div>
+<div>
+		<label for="">Patrones (las preguntas)</label>
+		<input #inputPatron type="text" name="" id="" (keyup.enter)="intencionActual.patterns.push(inputPatron.value)">
+		<ul>
+			<li *ngFor="let patron of intencionActual.patterns" >
+			{{patron}}
+			</li>
+
+		</ul>
+</div>
+
+<div>
+	<button (click)="save()">Guardar</button>
+</div>

@@ -13,18 +13,24 @@ import { ChatbotComponent} from './chatbot/chatbot.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {HttpClientModule} from '@angular/common/http';
+import { IntentComponent } from './intent/intent.component';
+import { FormsModule } from '@angular/forms';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
 		ChatbotComponent
+		IntentComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+		HttpClientModule,
+		FormsModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
