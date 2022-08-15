@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Componentes
 import { LoginComponent } from './login/login.component';
+import { IntentComponent } from './intent/intent.component';
 
 //Angular Material
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -19,7 +20,8 @@ import { ConfigurationComponent } from './configuration/configuration.component'
   declarations: [
     AppComponent,
     LoginComponent,
-    ConfigurationComponent
+    ConfigurationComponent,
+    IntentComponent,
   ],
   imports: [
     BrowserModule,
