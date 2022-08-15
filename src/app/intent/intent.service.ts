@@ -31,4 +31,9 @@ export class IntentService {
 		return this.http.put<Intent>(this.url+intent.id+"/",intent, this.httOptions);
 	}
 
+	/*public deleteById(id: number): Observable<Intent>
+  {
+    return this.http.delete<Intent>(this.url+"/deleteById/"+id, this.httpOptions);
+  }*/
+
 }

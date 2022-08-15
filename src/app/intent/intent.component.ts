@@ -12,7 +12,10 @@ export class IntentComponent implements OnInit {
 	intencionActual: Intent = {
 		id: 0,
 		tag: "",
-		patterns: []
+		patterns: [],
+		responses: [],
+		context: [],
+
 	}
 
   constructor(
@@ -50,4 +53,14 @@ export class IntentComponent implements OnInit {
 	update() : void {
 		this.intentService.update(this.intencionActual).subscribe()
 	}
+
+	/*deleteById(id: number):void{
+		this.intentService.deleteById(id).subscribe(
+			() => {
+        this.intencionActual = this.intencionActual
+        .filter( item => item.intentId != id);
+        this.intencionActual = new Intent(0,"","","","","");
+      }
+		);
+	}*/
 }

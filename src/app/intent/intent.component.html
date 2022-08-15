@@ -1,12 +1,35 @@
-<p>Registro de intenciones</p>
-
 <div>
-	  <label for="">Tags:</label>
-		<input type="text" placeholder="Ingrese el tag" [(ngModel)]="intencionActual.tag">
+<h1 class="text-center my-2 shadow-lg">
+    <span class="text-primary font-bold"> REGISTRO </span> DE INTENCIONES </h1>
 </div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-center">
+
+<div class="w-80 bg-primary border rounded-sm shadow-lg">
+	<p class="bg-neutral text-neutral-content rounded-sm" >Yavbot Cweb</p>
+	<div >
+		<ul class="menu w-78 bg-primary text-primary-content p-3 rounded-box">
+			<li><a> Dashboard </a></li>
+			<li><a> Configuración </a></li>
+			<li><a>Listas de respuestas</a></li>
+			<li><a>Listas de preguntas no contestadas</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="w-85 border rounded-sm shadow-lg">
+<div class="overflow-x-auto">
+  <table class="table table-zebra w-full">
+<div >
+	  <label  class="label" for=""> TAGS : </label>
+		<input type="text" placeholder="Ingrese el tag"
+		class="input input-bordered input-primary w-full max-w-xs" [(ngModel)]="intencionActual.tag">
+</div>
+<br>
 <div>
-		<label for="">Patrones (las preguntas)</label>
-		<input #inputPatron type="text" name="" id="" (keyup.enter)="intencionActual.patterns.push(inputPatron.value)">
+		<label  class="label" for="">  PATRONES </label>
+		<input #inputPatron type="text" placeholder="Ingrese la pregunta" 
+		class="input input-bordered input-primary w-full max-w-xs" name="" id="" (keyup.enter)="intencionActual.patterns.push(inputPatron.value)">
 		<ul>
 			<li *ngFor="let patron of intencionActual.patterns" >
 			{{patron}}
@@ -14,7 +37,35 @@
 
 		</ul>
 </div>
-
+<br>
 <div>
-	<button (click)="save()">Guardar</button>
+	<label  class="label" for=""> RESPUESTAS </label>
+	<input #inputRespuesta type="text" placeholder="Ingrese la respuesta"
+	class="input input-bordered input-primary w-full max-w-xs" name="" id="" (keyup.enter)="intencionActual.responses.push(inputRespuesta.value)">
+	<ul>
+		<li *ngFor="let respuesta of intencionActual.responses" >
+		{{respuesta}}
+		</li>
+
+	</ul>
 </div>
+<br>
+<div>
+	<label  class="label"  for=""> CONTEXTO </label>
+	<input #inputContexto type="text" placeholder="Ingrese el contexto" 
+	class="input input-bordered input-primary w-full max-w-xs" name="" id="" (keyup.enter)="intencionActual.context.push(inputContexto.value)">
+	<ul>
+		<li *ngFor="let contexto of intencionActual.context" >
+		{{contexto}}
+		</li>
+
+	</ul>
+</div>
+<div class="card-actions">
+	<button class="btn btn-primary m-3" (click)="save()">Guardar</button>
+	<button class="btn btn-primary m-3">Eliminar</button>
+</div>
+</table>
+</div>
+</div>
+
