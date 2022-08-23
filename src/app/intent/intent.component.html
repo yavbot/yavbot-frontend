@@ -28,7 +28,7 @@
 <br>
 <div>
 		<label  class="label" for="">  PATRONES </label>
-		<input #inputPatron type="text" placeholder="Ingrese la pregunta" 
+		<input #inputPatron type="text" placeholder="Ingrese la pregunta"
 		class="input input-bordered input-primary w-full max-w-xs" name="" id="" (keyup.enter)="intencionActual.patterns.push(inputPatron.value)">
 		<ul>
 			<li *ngFor="let patron of intencionActual.patterns" >
@@ -61,6 +61,7 @@
 
 	</ul>
 </div>
+
 <div class="card-actions">
 	<button class="btn btn-primary m-3" (click)="save()">Guardar</button>
 	<button class="btn btn-primary m-3">Eliminar</button>

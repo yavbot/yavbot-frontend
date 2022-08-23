@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { IntentComponent } from './intent/intent.component';
+import { ChatComponent } from './chat/chat.component';
 
 
 
@@ -22,7 +23,8 @@ import { IntentComponent } from './intent/intent.component';
   declarations: [
     AppComponent,
 		IntentComponent,
-    LoginComponent
+    LoginComponent,
+    ChatComponent
 
   ],
   imports: [
